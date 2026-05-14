@@ -69,11 +69,11 @@ label an LLM judge would produce after fully decoding the response.
 
 <table align="center">
   <tr>
-    <td width="44%" valign="middle" align="center">
+    <td width="50%" valign="middle" align="center">
       <img src="figures/classification_result.png" alt="Macro-F1 in-distribution vs OOD concepts"/>
       <br/><sub><b>Macro-F1 on ID vs held-out (OOD) concepts.</b></sub>
     </td>
-    <td width="56%" valign="middle" align="center">
+    <td width="50%" valign="middle" align="center">
       <img src="figures/classification_confusion.png" alt="Confusion matrices for DiffMean and LinearProbe"/>
       <br/><sub><b>Row-normalized confusion matrices.</b></sub>
     </td>
