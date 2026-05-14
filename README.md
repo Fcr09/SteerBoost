@@ -105,13 +105,15 @@ with steering acting as a directional bias on the residual stream.
 
 ### 3. Plug it in as an $\alpha$-ranker → near-oracle success at a fraction of the cost
 
+<p align="center">
+  <img src="figures/alphasearch.png" alt="Cost-vs-success-rate trade-off: SteerBoost-guided α search vs grid-search baselines, on ID and OOD concepts" width="100%"/>
+</p>
+
 Treat $P(\texttt{Succ})$ as a ranker over the $\alpha$ grid, decode only
 the top-$K$ candidates, and stop on the first success. At $K=20$,
 **SteerBoost-guided search recovers ~98% of the item-level oracle’s
-success rate using only ~11% of the decoded tokens** of full grid search,
-beats every non-oracle baseline (CGS, TCGS, IGS-A, IGS-D) at every
-budget, and the trend holds on both ID and OOD concepts. Reproduce with
-`bash scripts/06_run_alphasearch.sh`.
+success rate using only ~11% of the decoded tokens** of full grid search
+(IGS, red square). Reproduce with `bash scripts/06_run_alphasearch.sh`.
 
 ---
 
