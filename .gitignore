@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Generated artifacts (download separately from HF dataset; see README)
+data/training/
+data/result/
+data/cache/
+data/hidden_states/
+data/hidden_states_raw/
+data/batch_outputs/
+
+# Saved predictors / outputs
+saved_predictors_xgb/
+alphasearch_out/
+
+# Logs / scratch
+*.log
+scripts/log/
+log/
+batch_input*.jsonl
+batch*.jsonl

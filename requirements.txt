@@ -1,0 +1,22 @@
+# Tested on Python 3.10-3.12.
+# Versions are minimums; later patch releases also work.
+
+# Model rollouts and hidden-state extraction
+torch>=2.1
+transformers>=4.40
+accelerate>=0.30
+tqdm>=4.66
+numpy>=1.24
+
+# OpenAI batch API (training-example generation + GPT judgment)
+openai>=1.30
+
+# XGBoost early predictor
+scikit-learn>=1.3
+xgboost>=2.0
+
+# Plots / AlphaSearch figures
+matplotlib>=3.7
+
+# Pre-computed data download (scripts/download_data.py)
+huggingface_hub>=0.23
