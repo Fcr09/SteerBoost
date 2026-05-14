@@ -7,28 +7,10 @@
 > decode every candidate and ask an LLM judge — orders of magnitude more
 > expensive than the steered generation itself. We show that the **hidden
 > states of the first few generated tokens already tell you whether a steer
-> will under-shoot, succeed, or over-shoot**, and a tiny GBDT reads that
+> will under-steer, succeed, or over-steer**, and a tiny GBDT reads that
 > signal off at ~0.80 macro-F1 on seen concepts and ~0.70 on **unseen** ones.
 > Plug it in as an $\alpha$-ranker and you recover **~98% of the
 > exhaustive-grid-search success rate at ~11% of its decoding cost.***
-
-<!-- <p align="center">
-  <img src="figures/overview.png" alt="From costly full-rollout judging to early-decoding prediction" width="62%"/>
-</p>
-
-This repository accompanies the NeurIPS 2026 preprint
-**“When is Your LLM Steerable?”** It releases:
-
-- **ASTEER** — a 1.42 M-row testbed of labelled steered generations
-  (150 concepts × 50 AlpacaEval prompts × {DiffMean, LinearProbe} × 18 / 45
-  strengths × {Qwen3-1.7B, gemma-2-2b-it, Llama-3.2-3B-Instruct}),
-  with Cohen’s $\kappa = 0.83$ between the LLM judge and human annotators.
-- **SteerBoost** — a lightweight GBDT predictor that takes the first $K$
-  steered hidden states and outputs $P(\texttt{Under} / \texttt{Succ} /
-  \texttt{Over})$ without a full rollout.
-- The full reproducibility stack: rollout, hidden-state extraction, judging,
-  feature caching, training, and the **AlphaSearch** evaluation that uses
-  the predictor to pick which $\alpha$ to actually decode. -->
 
 **Dataset:** [`Fcr09/SteerBoost-data` on Hugging Face](https://huggingface.co/datasets/Fcr09/SteerBoost-data)
 
@@ -162,20 +144,27 @@ and AlphaSearch run on CPU.
 
 ## The ASTEER dataset
 
-<p align="center">
-  <img src="figures/dataset.png" alt="ASTEER construction" width="60%"/>
-</p>
-
-- **150 concepts** stratified into three abstraction levels: low (surface
-  format, e.g. emojis, uppercase, bold), mid (discourse, e.g. asks a
-  clarifying question, contains a warning), high (persona, topic,
-  framing).
-- **50 prompts** sampled from AlpacaEval, held fixed across all concepts.
-- **3 LLMs** × **2 steering methods** (DiffMean & LinearProbe) × **45 or 18
-  strengths**, judged by GPT-5-nano with the three-way rubric in
-  `submit_gpt_judgment.py`.
-- **Quality:** Cohen’s $\kappa = 0.74$ vs GPT-5.5 and **0.83 vs human
-  annotators** on 600 cross-checked samples.
+<table>
+  <tr>
+    <td width="38%" valign="middle" align="center">
+      <img src="figures/dataset.png" alt="ASTEER construction"/>
+    </td>
+    <td width="62%" valign="middle">
+      <ul>
+        <li><b>150 concepts</b> stratified into three abstraction levels:
+            low (surface format, e.g. emojis, uppercase, bold),
+            mid (discourse, e.g. asks a clarifying question, contains a warning),
+            high (persona, topic, framing).</li>
+        <li><b>50 prompts</b> sampled from AlpacaEval, held fixed across all concepts.</li>
+        <li><b>3 LLMs</b> × <b>2 steering methods</b> (DiffMean & LinearProbe) ×
+            <b>45 or 18 strengths</b>, judged by GPT-5-nano with the three-way
+            rubric in <code>submit_gpt_judgment.py</code>.</li>
+        <li><b>Quality:</b> Cohen’s κ = 0.74 vs GPT-5.5 and <b>0.83 vs human
+            annotators</b> on 600 cross-checked samples.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 Steered generations, GPT labels, and pre-built feature caches ship on
 [`Fcr09/SteerBoost-data`](https://huggingface.co/datasets/Fcr09/SteerBoost-data).
@@ -394,15 +383,3 @@ abstraction-level mix in both halves. The legacy contiguous split (ID
 
 ---
 
-<!-- ## Citation
-
-If SteerBoost or the ASTEER dataset is useful in your work, please cite:
-
-```bibtex
-@inproceedings{fan2026steerable,
-  title     = {When is Your {LLM} Steerable? Predicting Activation-Steering Success from Early Hidden States},
-  author    = {Fan, Chenrui and Cheng, Yize and Li, Ming and Feizi, Soheil and Zhou, Tianyi},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year      = {2026}
-}
-``` -->
