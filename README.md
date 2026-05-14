@@ -23,13 +23,7 @@
 </p>
 
 Across the three open models we test, the **overall steering success rate is
-only 10–23%** — even when you sweep $\alpha$ on a fine grid:
-
-| Model                | DiffMean | LinearProbe |
-|----------------------|:--------:|:-----------:|
-| Qwen3-1.7B           |  18.7%   |    10.7%    |
-| gemma-2-2b-it        |  22.2%   |    23.2%    |
-| Llama-3.2-3B-Instruct|  16.1%   |    18.4%    |
+only 10–23%** — even when you sweep $\alpha$ on a fine grid.
 
 Picking the right $\alpha$ matters enormously: too small and the steer is
 invisible, too large and the model derails. As the figure above shows,
