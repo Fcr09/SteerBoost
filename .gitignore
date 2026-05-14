@@ -28,3 +28,5 @@ scripts/log/
 log/
 batch_input*.jsonl
 batch*.jsonl
+
+*.pdf
