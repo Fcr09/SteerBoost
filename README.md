@@ -90,7 +90,7 @@ deployed system most needs an early stop. The dominant residual confusion
 is at the soft `Under` ↔ `Succ` boundary, as you’d expect from a graded
 phenomenon.
 
-### 2. The signal lives where theory says it should
+### 2. Where the signal lives?
 
 <p align="center">
   <img src="figures/feature_importance_heatmap_diffmean.png" alt="Feature importance heatmap (DiffMean)" width="92%"/>
